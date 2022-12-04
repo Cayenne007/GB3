@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -60,6 +60,8 @@
 		AA5766FA2160EFE50029F786 /* NewsTableViewCellOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5766F92160EFE50029F786 /* NewsTableViewCellOld.swift */; };
 		AA5766FD2160F0C10029F786 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5766FC2160F0C10029F786 /* NewsViewController.swift */; };
 		AA5766FF2160F2CD0029F786 /* New.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5766FE2160F2CD0029F786 /* New.swift */; };
+		AB79EC1A293C8A73009E2067 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB79EC19293C8A73009E2067 /* UIFont+Extension.swift */; };
+		AB79EC1C293C8A7E009E2067 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB79EC1B293C8A7E009E2067 /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -117,6 +119,8 @@
 		AA5766F92160EFE50029F786 /* NewsTableViewCellOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCellOld.swift; sourceTree = "<group>"; };
 		AA5766FC2160F0C10029F786 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		AA5766FE2160F2CD0029F786 /* New.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = New.swift; sourceTree = "<group>"; };
+		AB79EC19293C8A73009E2067 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		AB79EC1B293C8A7E009E2067 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		B1F60E259C4E88A48D0AC259 /* Pods-homeWork_1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-homeWork_1.debug.xcconfig"; path = "Pods/Target Support Files/Pods-homeWork_1/Pods-homeWork_1.debug.xcconfig"; sourceTree = "<group>"; };
 		CE1F4887F01F3E518C13D6ED /* Pods-homeWork_1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-homeWork_1.release.xcconfig"; path = "Pods/Target Support Files/Pods-homeWork_1/Pods-homeWork_1.release.xcconfig"; sourceTree = "<group>"; };
 		FB03EE607AE3B19FD932EA7A /* Pods_homeWork_1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_homeWork_1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -269,6 +273,7 @@
 				AA5766E72160AE6C0029F786 /* cells */,
 				AA5766D72160A7060029F786 /* controllers */,
 				AA5766F32160DE980029F786 /* custom */,
+				AB79EC18293C8A4E009E2067 /* Extension */,
 				AA5766D52160A6EC0029F786 /* main */,
 				AA5766E42160AD630029F786 /* model */,
 				84D1DEB821AD5F16006FC20E /* service */,
@@ -284,7 +289,6 @@
 				AA5766C32160A5AD0029F786 /* AppDelegate.swift */,
 				AA5766CA2160A5AF0029F786 /* Assets.xcassets */,
 				AA5766CC2160A5AF0029F786 /* LaunchScreen.storyboard */,
-				AA5766E22160AD140029F786 /* Extension.swift */,
 			);
 			path = main;
 			sourceTree = "<group>";
@@ -402,6 +406,16 @@
 				84D1DEBB21AE624A006FC20E /* NewsInfoViewController.swift */,
 			);
 			path = news;
+			sourceTree = "<group>";
+		};
+		AB79EC18293C8A4E009E2067 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				AA5766E22160AD140029F786 /* Extension.swift */,
+				AB79EC19293C8A73009E2067 /* UIFont+Extension.swift */,
+				AB79EC1B293C8A7E009E2067 /* UIColor+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		DB9A454896C63B692F475996 /* Pods */ = {
@@ -532,6 +546,7 @@
 				842A0408216DB83F00FAFF92 /* CustomSearchBar.swift in Sources */,
 				8442ABAB2192EC0E003DDA6A /* VkResponseParser.swift in Sources */,
 				AA3D1EB121B25109000ED1C1 /* FirebaseService.swift in Sources */,
+				AB79EC1A293C8A73009E2067 /* UIFont+Extension.swift in Sources */,
 				842A03E0216C860000FAFF92 /* CustomIndicator.swift in Sources */,
 				8415662D21B7916500AF9803 /* SearchGroupViewController.swift in Sources */,
 				84D1DEC021AE8AB9006FC20E /* VkCommentProfile.swift in Sources */,
@@ -565,6 +580,7 @@
 				AA5766EA2160AE950029F786 /* FriendTableViewCell.swift in Sources */,
 				8424E54921743AA200188E61 /* ImagesViewController.swift in Sources */,
 				AA5766C42160A5AD0029F786 /* AppDelegate.swift in Sources */,
+				AB79EC1C293C8A7E009E2067 /* UIColor+Extension.swift in Sources */,
 				84D1DEBC21AE624A006FC20E /* NewsInfoViewController.swift in Sources */,
 				8442ABA9219132B7003DDA6A /* AlamofireService.swift in Sources */,
 				84C120962161C5AD0044CBEB /* GroupsViewController.swift in Sources */,

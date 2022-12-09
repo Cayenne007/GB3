@@ -39,7 +39,7 @@ class VkResponseParser {
         switch result {
         case .success(let value):
             let json = JSON(value)
-            if let responses = json["response"].array {
+            if let responses = json["response"]["items"].array {
                 for response in responses {
                     if (response.dictionary != nil) {
                         let friend = VkFriend()
@@ -67,7 +67,7 @@ class VkResponseParser {
         }
         
         if friends.count > 0 {
-            RealmWorker.instance.saveItems(items: friends, needMigrate: true)//saveFriends(friends)
+            let _ = RealmWorker.instance.saveItems(items: friends, needMigrate: true)//saveFriends(friends)
         } else {
             friends = RealmWorker.instance.getMyFriends()//getItems(VkFriend.self)
         }
@@ -81,7 +81,7 @@ class VkResponseParser {
         switch result {
         case .success(let value):
             let json = JSON(value)
-            if let responses = json["response"].array {
+            if let responses = json["response"]["items"].array {
                 for response in responses {
                     if (response.dictionary != nil) {
                         let group = VkGroup()
@@ -110,7 +110,7 @@ class VkResponseParser {
         }
         if !isSearched {
             if groups.count > 0 {
-                RealmWorker.instance.saveItems(items: groups)//saveGroups(groups)//
+                let _ = RealmWorker.instance.saveItems(items: groups)//saveGroups(groups)//
             } else {
                 groups = RealmWorker.instance.getMyGroups()//getItems(VkGroup.self)
             }
@@ -142,7 +142,7 @@ class VkResponseParser {
         switch result {
         case .success(let value):
             let json = JSON(value)
-            if let responses = json["response"].array {
+            if let responses = json["response"]["items"].array {
                 for response in responses {
                     if (response.dictionary != nil) {
                         let photo = VkPhoto()

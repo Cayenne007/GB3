@@ -123,7 +123,7 @@ extension LoginVkViewController: WKNavigationDelegate {
         
         if let token = params["access_token"] {
             Session.instance.token = token
-            FirebaseService.instance.addUser()
+            //FirebaseService.instance.addUser()
             print("access_token = \(token)")
         }
         if let userId = params["user_id"] {

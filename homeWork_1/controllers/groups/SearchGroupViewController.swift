@@ -139,7 +139,7 @@ extension SearchGroupViewController: VkApiGroupsDelegate {
         for (index, group) in groups.enumerated() {
             if group.gid == gid {
                 RealmWorker.instance.saveItems(items: [group], needMigrate: false, needUpdate: true)
-                FirebaseService.instance.addGroup(group: group)
+                //FirebaseService.instance.addGroup(group: group)
                 updateGroup(group: group, is_member: 1, index: index)
                 break
             }
@@ -153,7 +153,7 @@ extension SearchGroupViewController: VkApiGroupsDelegate {
     func returnLeave(_ gid: Int) {
         for (index, group) in groups.enumerated() {
             if group.gid == gid {
-                FirebaseService.instance.removeGroup(group: group)
+                //FirebaseService.instance.removeGroup(group: group)
                 RealmWorker.instance.removeItem(group)
                 updateGroup(group: group, is_member: 0, index: index)
                 break

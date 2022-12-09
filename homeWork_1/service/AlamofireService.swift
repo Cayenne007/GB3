@@ -53,7 +53,7 @@ class AlamofireService {
         let params: Parameters = [
             "access_token": Session.instance.token,
             "fields": "id,nickname,photo_100,status",
-            "v": "3.0",
+            "v": "5.81",
             ]
         
         AF.request(fullRow, method: .get, parameters: params)
@@ -77,7 +77,7 @@ class AlamofireService {
             "access_token": Session.instance.token,
             "fields": "id,name",
             "extended": "1",
-            "v": "3.0",
+            "v": "5.87",
             "count":"100"
         ]
         
@@ -98,7 +98,7 @@ class AlamofireService {
         let params: Parameters = [
             "access_token": Session.instance.token,
             "group_id": "\(gid)",
-            "v": "3.0"
+            "v": "5.81"
         ]
         
         AF.request(fullRow, method: .get, parameters: params)
@@ -118,7 +118,7 @@ class AlamofireService {
         let params: Parameters = [
             "access_token": Session.instance.token,
             "group_id": "\(gid)",
-            "v": "3.0"
+            "v": "5.81"
         ]
         
         AF.request(fullRow, method: .get, parameters: params)
@@ -141,7 +141,7 @@ class AlamofireService {
             "q": search,
             "extended": "1",
             "sort": "2",
-            "v": "3.0"
+            "v": "5.81"
         ]
         AF.request(fullRow, method: .get, parameters: params)
             .responseJSON(queue: DispatchQueue.global(qos: .userInteractive)) { response in
@@ -161,7 +161,7 @@ class AlamofireService {
         let params: Parameters = [
             "access_token": Session.instance.token,
             "extended": "1",
-            "v": "3.0",
+            "v": "5.81",
             "count":"100"
         ]
         
@@ -182,7 +182,7 @@ class AlamofireService {
         let params: Parameters = [
             "access_token": Session.instance.token,
             "extended": "1",
-            "v": "3.0",
+            "v": "5.81",
             "owner_id":"\(id)",
             "count":"100"//,
             //            "album_id":"saved"

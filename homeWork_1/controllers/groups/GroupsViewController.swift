@@ -63,11 +63,11 @@ class GroupsViewController: UIViewController {
             print("groupObserver is work")
             switch changes {
                
-            case .initial(let collection):
+            case .initial(_):
 //                print(collection)
                 self.tableView.reloadData()
                 break
-            case .update(let collection, let deletions, let insertions, let modifications):
+            case .update(_, _,  _, _):
                 if !self.searchActive {
 //                    self.tableView.beginUpdates()
 //                    if deletions.count > 0 {
@@ -235,7 +235,7 @@ extension GroupsViewController: VkApiGroupsDelegate {
         if let groups = groups {
             for  group in groups {
                 if group.gid == gid {
-                    FirebaseService.instance.removeGroup(group: group)
+                    //FirebaseService.instance.removeGroup(group: group)
                     RealmWorker.instance.removeItem(group)
                     tableView.reloadData()
                     break

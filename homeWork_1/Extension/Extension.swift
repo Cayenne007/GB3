@@ -26,6 +26,8 @@ struct GlobalConstants {
     static let defaults = UserDefaults.standard
     
     static let vkApi = "https://api.vk.com/method/"
+    
+    static let defautlImage = UIImage(named: "noPhoto")
 
 }
 

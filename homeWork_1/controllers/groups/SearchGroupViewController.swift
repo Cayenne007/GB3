@@ -89,7 +89,7 @@ extension SearchGroupViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyGroupCell", for: indexPath) as! MyGroupCell
         let group = groups[indexPath.row]
-        cell.load(group)
+        cell.load(group.viewModel)
         return cell
     }
     
@@ -190,4 +190,8 @@ extension SearchGroupViewController: VkApiGroupsDelegate {
 }
 
 
-
+extension VkGroup {
+    var viewModel: GroupViewModelFactory.ViewModel {
+        GroupViewModelFactory.ViewModel(group: self)
+    }
+}

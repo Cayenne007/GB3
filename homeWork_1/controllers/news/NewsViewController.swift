@@ -19,6 +19,8 @@ class NewsViewController: UIViewController {
     
     
     private var feeds = [VkFeed]()
+    private let feedsViewModelsFactory = NewsViewModelFactory()
+    private var viewModels: [NewsViewModelFactory.ViewModel] = []
     
     private var needClearNews = true
     private var isLoad = false
@@ -40,14 +42,19 @@ class NewsViewController: UIViewController {
         self.needClearNews = needClearNews
         
         dataServiceAdapter.getNews(needClearNews: needClearNews) { [weak self] feeds in
-            self?.refreshControl.endRefreshing()
-            self?.isLoad = false
-            if let _ = self?.needClearNews {
-                self?.feeds.removeAll()
-                self?.tableView.reloadData()
+            
+            guard let self = self else {
+                return
             }
-            self?.feeds.append(contentsOf: feeds)
-            self?.tableView.reloadData()
+            self.refreshControl.endRefreshing()
+            self.isLoad = false
+            if self.needClearNews {
+                self.feeds.removeAll()
+                self.tableView.reloadData()
+            }
+            self.feeds.append(contentsOf: feeds)
+            self.viewModels = self.feedsViewModelsFactory.constructViewModel(from: feeds)
+            self.tableView.reloadData()
         }
     }
     
@@ -92,7 +99,8 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath) as! NewsTableViewCell
-        cell.configure(feed: feeds[indexPath.row])
+        
+        cell.configure(feed: viewModels[indexPath.row])
         cell.delegate = self
         return cell
     }

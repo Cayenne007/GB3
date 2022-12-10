@@ -24,15 +24,15 @@ class MyGroupCell: UITableViewCell {
     }
     
     
-    func load(_ group: VkGroup) {
-        self.group = group
+    func load(_ viewModel: GroupViewModelFactory.ViewModel) {
+        self.group = viewModel.group
         
-        labelName.text = group.name
-        labelType.text = group.getType()
-        labelMember.text = group.is_member > 0 ? "Вы вступили" : ""
+        labelName.text = viewModel.name
+        labelType.text = viewModel.type
+        labelMember.text = viewModel.member
         
-        if group.photo.count > 0 {
-            imageAva.sd_setImage(with: URL(string: group.photoBig), placeholderImage: UIImage(named: "noPhoto"))
+        if let photo = viewModel.groupPhoto {
+            imageAva.sd_setImage(with: photo, placeholderImage: viewModel.defaultImage)
         }
     }
 

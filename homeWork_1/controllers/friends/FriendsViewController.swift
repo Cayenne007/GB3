@@ -31,6 +31,7 @@ class FriendsViewController: UIViewController {
     private var groupedFriends = [FriendList]()
     private var filteredGroupedFriends = [FriendList]()
     private var friends: [VkFriend] = []
+    
     private let dataServiceAdapter = DataServiceAdapter()
     
 
@@ -185,7 +186,7 @@ extension FriendsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendTableViewCell", for: indexPath) as! FriendTableViewCell
         let friend = searchActive ? filteredGroupedFriends[indexPath.section].friends[indexPath.row] : groupedFriends[indexPath.section].friends[indexPath.row]
-        cell.loadData(friend: friend)
+        cell.loadData(friend: friend.viewModel)
         return cell
     }
     
@@ -217,3 +218,8 @@ extension FriendsViewController: FriendsViewControllerDelegate {
 
 
 
+extension VkFriend {
+    var viewModel: FriendsViewModelFactory.ViewModel {
+        FriendsViewModelFactory.ViewModel(friend: self)
+    }
+}

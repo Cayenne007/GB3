@@ -19,12 +19,11 @@ class FriendTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    func loadData(friend: VkFriend) {
-        labelName.text = friend.full_name
-//        friend.first_name
+    func loadData(friend: FriendsViewModelFactory.ViewModel) {
+        labelName.text = friend.fullName
         
-        if friend.photo.count > 0 {
-            imageAva.sd_setImage(with: URL(string: friend.photo), placeholderImage: UIImage(named: "noPhoto"))
+        if let photoUrl = friend.photoUrl {
+            imageAva.sd_setImage(with: photoUrl, placeholderImage: friend.defaultImage)
         }
     }
 

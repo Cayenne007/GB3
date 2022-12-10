@@ -19,8 +19,10 @@ class GroupsViewController: UIViewController {
     
     private var groups: [VkGroup] = []
     private var filteredGroups: [VkGroup] = []
+    private var viewModels: [GroupViewModelFactory.ViewModel] = []
     
     private let dataServiceAdapter = DataServiceAdapter()
+    private let groupsViewModelFactory = GroupViewModelFactory()
     
     var searchActive = false
     
@@ -34,6 +36,7 @@ class GroupsViewController: UIViewController {
         
         dataServiceAdapter.getGroups { [weak self] groups in
             self?.groups = groups
+            self?.viewModels = self?.groupsViewModelFactory.constructViewModels(with: groups) ?? []
             self?.tableView.reloadData()
         }
         
@@ -96,8 +99,7 @@ extension GroupsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyGroupCell", for: indexPath) as! MyGroupCell
-        let group = searchActive ? filteredGroups[indexPath.row] : groups[indexPath.row]
-        cell.load(group)
+        cell.load(viewModels[indexPath.row])
         return cell
     }
     
@@ -132,12 +134,14 @@ extension GroupsViewController {
     private func getMyGroups() {
         dataServiceAdapter.getGroups { [weak self] groups in
             self?.groups = groups
+            self?.viewModels = self?.groupsViewModelFactory.constructViewModels(with: groups) ?? []
             self?.tableView.reloadData()
         }
     }
     
     private func getGroups(by search: String) {
         filteredGroups = dataServiceAdapter.getGroupsBy(by: search)
+        viewModels = groupsViewModelFactory.constructViewModels(with: filteredGroups)
         tableView.reloadData()
     }
     

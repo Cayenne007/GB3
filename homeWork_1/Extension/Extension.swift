@@ -26,6 +26,8 @@ struct GlobalConstants {
     static let defaults = UserDefaults.standard
     
     static let vkApi = "https://api.vk.com/method/"
+    
+    static let defautlImage = UIImage(named: "noPhoto")
 
 }
 
@@ -106,13 +108,6 @@ struct GlobalConstants {
         }
     }
     
-}
-
-
-extension UIColor {
-    struct vkColor {
-        static let main = UIColor.init(red: 65/255, green: 107/255, blue: 158/255, alpha: 1)
-    }
 }
 
 extension CGFloat {

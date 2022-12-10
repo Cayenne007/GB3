@@ -108,33 +108,22 @@ class NewsTableViewCell: UITableViewCell {
     }
     
     
-    func configure(feed: VkFeed) {
+    func configure(feed: NewsViewModelFactory.ViewModel) {
         
-        labelDate.text = feed.getFeedDate()
+        labelDate.text = feed.feedDate
         labelFeedGroupHeader.text = feed.sourceName
+        labelText.pin.height(feed.feedHeight)
+        labelText.text = feed.text
+        labelLike.text = feed.likes
+        labelViews.text = feed.views
+        labelShare.text = feed.shares
+        labelComment.text = feed.comments
         
-        if feed.feedText.count == 0 {
-            labelText.pin.height(0)
-        } else {
-            labelText.pin.height(70)
-        }
+        imageViewGroup.sd_setImage(with: feed.sourceUrl, placeholderImage: feed.defaultImage)
         
-        labelText.text = feed.feedText
-        labelLike.text = feed.getStringFrom(count: feed.countLikes)
-        labelViews.text = feed.getStringFrom(count: feed.countViews)
-        labelShare.text = feed.getStringFrom(count: feed.countReposts)
-        labelComment.text = feed.getStringFrom(count: feed.countComments)
-        
-        imageViewGroup.sd_setImage(with: URL(string: feed.sourceUrl), placeholderImage: UIImage(named: "noPhoto"))
-        
-        if feed.attachments.count > 0 {
-            
-            let height = self.frame.width * CGFloat(feed.attachments[0].height) / CGFloat(feed.attachments[0].width)
-            
-            imageNew.pin.height(height)
-            
-            imageNew.sd_setImage(with: URL(string: feed.attachments[0].imageUrl), placeholderImage: UIImage(named: "noPhoto"))
-            
+        if let attachment = feed.feedAttachment {
+            imageNew.pin.height(frame.width * attachment.size)
+            imageNew.sd_setImage(with: attachment.url, placeholderImage: feed.defaultImage)
         } else {
             imageNew.pin.height(0)
         }
@@ -245,3 +234,4 @@ extension NewsTableViewCell {
     }
 
 }
+

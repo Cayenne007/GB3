@@ -18,7 +18,7 @@ class RealmWorker {
     static var configuration = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
     
     
-    func saveItems<Element: Object>(items: [Element], needMigrate: Bool = false, needUpdate: Bool = true) -> Realm? {
+    func saveItems<Element: Object>(items: [Element], needMigrate: Bool = true, needUpdate: Bool = true) -> Realm? {
         
         do {
             let config = Realm.Configuration(deleteRealmIfMigrationNeeded: needMigrate)

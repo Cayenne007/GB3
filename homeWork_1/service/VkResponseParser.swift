@@ -39,11 +39,11 @@ class VkResponseParser {
         switch result {
         case .success(let value):
             let json = JSON(value)
-            if let responses = json["response"].array {
+            if let responses = json["response"]["items"].array {
                 for response in responses {
                     if (response.dictionary != nil) {
                         let friend = VkFriend()
-                        friend.uid = response["uid"].intValue
+                        friend.uid = response["id"].intValue
                         friend.online = response["online"].intValue
                         friend.user_id = response["user_id"].intValue
                         friend.photo = response["photo_100"].stringValue
@@ -67,7 +67,7 @@ class VkResponseParser {
         }
         
         if friends.count > 0 {
-            RealmWorker.instance.saveItems(items: friends, needMigrate: true)//saveFriends(friends)
+            let _ = RealmWorker.instance.saveItems(items: friends, needMigrate: true)//saveFriends(friends)
         } else {
             friends = RealmWorker.instance.getMyFriends()//getItems(VkFriend.self)
         }
@@ -81,7 +81,7 @@ class VkResponseParser {
         switch result {
         case .success(let value):
             let json = JSON(value)
-            if let responses = json["response"].array {
+            if let responses = json["response"]["items"].array {
                 for response in responses {
                     if (response.dictionary != nil) {
                         let group = VkGroup()
@@ -110,7 +110,7 @@ class VkResponseParser {
         }
         if !isSearched {
             if groups.count > 0 {
-                RealmWorker.instance.saveItems(items: groups)//saveGroups(groups)//
+                let _ = RealmWorker.instance.saveItems(items: groups)//saveGroups(groups)//
             } else {
                 groups = RealmWorker.instance.getMyGroups()//getItems(VkGroup.self)
             }
@@ -142,18 +142,23 @@ class VkResponseParser {
         switch result {
         case .success(let value):
             let json = JSON(value)
-            if let responses = json["response"].array {
+            if let responses = json["response"]["items"].array {
                 for response in responses {
                     if (response.dictionary != nil) {
                         let photo = VkPhoto()
+                                                
+                        let photoSizes = response["sizes"].array?.map{ field in
+                            VkPhotoSizes(json: field)
+                        }.sorted(by: {$0.maxSize < $1.maxSize})
+                        
                         photo.pid = response["pid"].intValue
                         photo.aid = response["aid"].intValue
                         photo.created = response["created"].intValue
                         photo.height = response["height"].intValue
                         photo.width = response["width"].intValue
                         photo.ownerId = response["owner_id"].intValue
-                        photo.photo = response["src"].stringValue
-                        photo.photoBig = response["src_big"].stringValue
+                        photo.photo = photoSizes?.first?.url ?? ""
+                        photo.photoBig = photoSizes?.last?.url ?? ""
                         photo.text = response["text"].stringValue
                         
                         photo.likes = VkLikes()

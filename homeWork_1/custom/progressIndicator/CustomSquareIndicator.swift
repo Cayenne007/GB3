@@ -30,13 +30,13 @@ class CustomSquareIndicator: UIActivityIndicatorView {
     
     
     override func startAnimating() {
-        self.backgroundColor = UIColor(red: 24/255, green: 139/255, blue: 243/255, alpha: 1)
+        self.backgroundColor = UIColor.CustomSquareIndicator.background
         
         myLayer.path = nil
         myLayer.lineWidth = 4
         
-        myLayer.strokeColor = UIColor(red: 238/255, green: 243/255, blue: 251/255, alpha: 1).cgColor
-        myLayer.fillColor = UIColor(red: 92/255, green: 175/255, blue: 248/255, alpha: 1).cgColor
+        myLayer.strokeColor = UIColor.CustomSquareIndicator.stroke
+        myLayer.fillColor = UIColor.CustomSquareIndicator.fill
         
         let path = returnPath()
         path.close()

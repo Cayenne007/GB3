@@ -8,8 +8,8 @@ target 'homeWork_1' do
   # Pods for homeWork_1
 	
 	pod 'IQKeyboardManagerSwift', '= 6.5.9'
-	pod 'Alamofire', '= 5.5.0'
-	pod 'RealmSwift', '= 10.20.1'
+	pod 'Alamofire'
+	pod 'RealmSwift'
 	pod 'PinLayout', '= 1.10.0'
 	pod 'SwiftyJSON', '= 4.3.0'
 	pod 'SDWebImage', '= 4.4.8'

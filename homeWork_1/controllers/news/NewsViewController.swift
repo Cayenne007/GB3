@@ -20,13 +20,12 @@ class NewsViewController: UIViewController {
     
     private var feeds = [VkFeed]()
     
-    var startFrom = ""
     private var needClearNews = true
     private var isLoad = false
+    private let dataServiceAdapter = DataServiceAdapter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setObserver()
         setTableViewSettings()
         prepareGetFeeds(needClearNews: true)
     }
@@ -36,24 +35,20 @@ class NewsViewController: UIViewController {
         
     }
     
-    
-    private func setObserver() {
-        let nextFromNotification = Notification.Name("nextFromNotification")
-        NotificationCenter.default.addObserver(self, selector: #selector(updateNextFrom(notification:)), name: nextFromNotification, object: nil)
-    }
-    
-    
-    @objc func updateNextFrom(notification: Notification) {
-        if let nextFrom = notification.userInfo?["nextFrom"] as? String {
-            self.startFrom = nextFrom
-        }
-    }
-    
-    
     private func prepareGetFeeds(needClearNews: Bool) {
         isLoad = true
         self.needClearNews = needClearNews
-        AlamofireService.instance.getNews(startFrom: needClearNews ? "":startFrom, delegate: self)
+        
+        dataServiceAdapter.getNews(needClearNews: needClearNews) { [weak self] feeds in
+            self?.refreshControl.endRefreshing()
+            self?.isLoad = false
+            if let _ = self?.needClearNews {
+                self?.feeds.removeAll()
+                self?.tableView.reloadData()
+            }
+            self?.feeds.append(contentsOf: feeds)
+            self?.tableView.reloadData()
+        }
     }
     
     
@@ -135,31 +130,7 @@ extension NewsViewController: NewsTableViewCellDelegate {
     
 }
 
-extension NewsViewController: VkApiFeedsDelegate {
-    
-    func returnFeeds(_ feeds: [VkFeed]) {
-//        DispatchQueue.main.async {
-//            self.refreshControl.endRefreshing()
-//            self.isLoad = false
-//            if self.needClearNews {
-//                self.feeds.removeAll()
-//                self.tableView.reloadData()
-//            }
-//            self.feeds.append(contentsOf: feeds)
-//            self.tableView.reloadData()
-//        }
-        self.refreshControl.endRefreshing()
-        isLoad = false
-        if needClearNews {
-            self.feeds.removeAll()
-            tableView.reloadData()
-        }
-        self.feeds.append(contentsOf: feeds)
-        tableView.reloadData()
-        //        self.addNewCells(array: feeds)
-
-    }
-    
+extension NewsViewController {
     
     private func addNewCells(array: [VkFeed]) {
         if (array.count > 0) {

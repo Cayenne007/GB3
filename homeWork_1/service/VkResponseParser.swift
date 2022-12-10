@@ -43,7 +43,7 @@ class VkResponseParser {
                 for response in responses {
                     if (response.dictionary != nil) {
                         let friend = VkFriend()
-                        friend.uid = response["uid"].intValue
+                        friend.uid = response["id"].intValue
                         friend.online = response["online"].intValue
                         friend.user_id = response["user_id"].intValue
                         friend.photo = response["photo_100"].stringValue
@@ -146,14 +146,19 @@ class VkResponseParser {
                 for response in responses {
                     if (response.dictionary != nil) {
                         let photo = VkPhoto()
+                                                
+                        let photoSizes = response["sizes"].array?.map{ field in
+                            VkPhotoSizes(json: field)
+                        }.sorted(by: {$0.maxSize < $1.maxSize})
+                        
                         photo.pid = response["pid"].intValue
                         photo.aid = response["aid"].intValue
                         photo.created = response["created"].intValue
                         photo.height = response["height"].intValue
                         photo.width = response["width"].intValue
                         photo.ownerId = response["owner_id"].intValue
-                        photo.photo = response["src"].stringValue
-                        photo.photoBig = response["src_big"].stringValue
+                        photo.photo = photoSizes?.first?.url ?? ""
+                        photo.photoBig = photoSizes?.last?.url ?? ""
                         photo.text = response["text"].stringValue
                         
                         photo.likes = VkLikes()

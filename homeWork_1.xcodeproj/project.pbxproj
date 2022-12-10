@@ -62,6 +62,8 @@
 		AA5766FF2160F2CD0029F786 /* New.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5766FE2160F2CD0029F786 /* New.swift */; };
 		AB79EC1A293C8A73009E2067 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB79EC19293C8A73009E2067 /* UIFont+Extension.swift */; };
 		AB79EC1C293C8A7E009E2067 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB79EC1B293C8A7E009E2067 /* UIColor+Extension.swift */; };
+		ABA979042943BBF1009283E6 /* DataServiceAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA979032943BBF1009283E6 /* DataServiceAdapter.swift */; };
+		ABA9790629445C22009283E6 /* VkPhotoSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA9790529445C22009283E6 /* VkPhotoSizes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -121,6 +123,8 @@
 		AA5766FE2160F2CD0029F786 /* New.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = New.swift; sourceTree = "<group>"; };
 		AB79EC19293C8A73009E2067 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		AB79EC1B293C8A7E009E2067 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		ABA979032943BBF1009283E6 /* DataServiceAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServiceAdapter.swift; sourceTree = "<group>"; };
+		ABA9790529445C22009283E6 /* VkPhotoSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VkPhotoSizes.swift; path = ../../../../../../../Downloads/VkPhotoSizes.swift; sourceTree = "<group>"; };
 		B1F60E259C4E88A48D0AC259 /* Pods-homeWork_1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-homeWork_1.debug.xcconfig"; path = "Pods/Target Support Files/Pods-homeWork_1/Pods-homeWork_1.debug.xcconfig"; sourceTree = "<group>"; };
 		CE1F4887F01F3E518C13D6ED /* Pods-homeWork_1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-homeWork_1.release.xcconfig"; path = "Pods/Target Support Files/Pods-homeWork_1/Pods-homeWork_1.release.xcconfig"; sourceTree = "<group>"; };
 		FB03EE607AE3B19FD932EA7A /* Pods_homeWork_1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_homeWork_1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +164,7 @@
 				844ACE342186BFC500565895 /* VkFriend.swift */,
 				844ACE362186D98900565895 /* VkGroup.swift */,
 				8442AB9621870B13003DDA6A /* VkPhoto.swift */,
+				ABA9790529445C22009283E6 /* VkPhotoSizes.swift */,
 				84EC564921A2A2DA00C8542C /* VkFeed.swift */,
 				84D1DEC121AE8CFD006FC20E /* VkComment.swift */,
 				84D1DEBF21AE8AB9006FC20E /* VkCommentProfile.swift */,
@@ -233,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				8442ABA8219132B7003DDA6A /* AlamofireService.swift */,
+				ABA979032943BBF1009283E6 /* DataServiceAdapter.swift */,
 				8442ABAA2192EC0D003DDA6A /* VkResponseParser.swift */,
 				8442ABAF21957D2D003DDA6A /* RealmWorker.swift */,
 				AA3D1EB021B25109000ED1C1 /* FirebaseService.swift */,
@@ -565,6 +571,7 @@
 				8424E5512176E7D900188E61 /* CustomSegue.swift in Sources */,
 				AA5766F02160D82B0029F786 /* FriendList.swift in Sources */,
 				84EC564A21A2A2DB00C8542C /* VkFeed.swift in Sources */,
+				ABA979042943BBF1009283E6 /* DataServiceAdapter.swift in Sources */,
 				8424E55C2177401700188E61 /* CustomNavigationController.swift in Sources */,
 				AA5766FA2160EFE50029F786 /* NewsTableViewCellOld.swift in Sources */,
 				8442ABB021957D2D003DDA6A /* RealmWorker.swift in Sources */,
@@ -573,6 +580,7 @@
 				8424E560217845B700188E61 /* CustomInteractiveTransition.swift in Sources */,
 				AA5766E12160AC5B0029F786 /* FriendsViewController.swift in Sources */,
 				AA5766E62160AD8C0029F786 /* Friend.swift in Sources */,
+				ABA9790629445C22009283E6 /* VkPhotoSizes.swift in Sources */,
 				84D1DEC521AE926B006FC20E /* CommentTableViewCell.swift in Sources */,
 				84D1DEBE21AE745D006FC20E /* NewsInfoTableViewCell.swift in Sources */,
 				84105FB3217F173D00EEF673 /* VKApiViewController.swift in Sources */,
